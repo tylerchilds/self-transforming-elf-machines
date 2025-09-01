@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Plan98.org | a platform for publishing playful and practical products to "The Platform"</title>
+    <style>
+      :root {
+        --shadow: 0px 0px 2px 2px rgba(0,0,0,.25),
+                  0px 0px 6px 6px rgba(0,0,0,.15),
+                  0px 0px 2rem 2rem rgba(0,0,0,.05);
+        --red: firebrick;
+        --orange: darkorange;
+        --yellow: gold;
+        --green: mediumseagreen;
+        --blue: dodgerblue;
+        --indigo: slateblue;
+        --purple: mediumpurple;
+        --violet: mediumpurple;
+        --gray: sienna;
+      }
+      html, body {
+        height: 100%;
+        background: rgba(255,255,255,.85);
+        overscroll-behavior: none;
+        transform: translateZ(0);
+        padding: 0;
+        margin: 0;
+      }
+
+      @media screen {
+        body{ overflow: auto; }
+      }
+
+      body {
+      }
+
+      body > *{
+        position: relative;
+        z-index: 2;
+      }
+
+      main {
+        position: relative;
+        height: 100%;
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        margin: auto;
+      }
+
+      button * {
+        pointer-events: none;
+      }
+
+.field input,
+.field textarea,
+.field select,
+.standard-button,
+.standard-input,
+::part(button) {
+  background: linear-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,.5) 100%), var(--root-theme, mediumseagreen);
+  pointer-events: all;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.1),
+              0 1px 2px 2px rgba(0,0,0,.05);
+  background-size: 1px 100%;
+  background-repeat: repeat-x;
+  font-weight: 400;
+  padding: .5rem;
+  transition: background 200ms ease-in-out;
+  line-height: 1.25;
+  border: none;
+  padding: .5rem;
+  color: rgba(0,0,0,.85);
+  border-bottom: 3px solid var(--root-theme, mediumseagreen);
+  text-decoration: none;
+  display: inline-grid;
+  border-radius: 5px;
+  place-items: center start;
+}
+
+.field input,
+.field textarea,
+.field select,
+.standard-input {
+  background: linear-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,.5) 100%), lightgray;
+}
+
+.field input:active,
+.field textarea:active,
+.field select:active,
+.standard-button:active,
+.standard-button.active,
+.standard-input:active {
+  border-top: 3px solid rgba(255,255,255,.25);
+  border-bottom: none;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.1) inset,
+              0 1px 2px 2px rgba(0,0,0,.05) inset;
+}
+
+.standard-button.bias-positive {
+  --root-theme: var(--green, mediumseagreen);
+}
+
+.standard-button.bias-link {
+  --root-theme: var(--blue, dodgerblue);
+}
+
+.standard-button.bias-generic {
+  --root-theme: dimgray;
+}
+
+.standard-button.bias-negative {
+  --root-theme: var(--red, firebrick);
+}
+
+
+.standard-button:link,
+.standard-button:visited {
+  color: rgba(0,0,0,.85);
+}
+
+.standard-button:hover,
+.standard-button:focus,
+.standard-button.active,
+.standard-button:active {
+  color: rgba(255,255,255,.85);
+  background: linear-gradient(rgba(255,255,255,.5) 0%, rgba(0,0,0,.25) 100%), var(--root-theme, mediumseagreen);
+}
+
+.standard-button.active,
+.standard-button:active {
+  color: rgba(0,0,0,.85);
+  background: linear-gradient(rgba(255,255,255,.85) 0%, rgba(255,255,255,.85) 100%), var(--root-theme, mediumseagreen);
+  border-color: rgba(0,0,0,.85);
+}
+
+.standard-input:active {
+  color: rgba(0,0,0,.85);
+  border-color: rgba(0,0,0,.85);
+  background: linear-gradient(rgba(255,255,255,.85) 0%, rgba(255,255,255,.85) 100%), lightgray;
+}
+
+
+.field input,
+.field textarea,
+.field select,
+.standard-input {
+  width: 100%;
+  padding: .25rem .5rem;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1),
+              0 1px 3px 3px rgba(0,0,0,.05);
+  border-bottom: 3px solid rgba(0,0,0,.2);
+  line-height: 1.25;
+  resize: none;
+  place-items: center start;
+}
+
+.standard-button * {
+  pointer-events: none;
+}
+
+.standard-input:focus {
+  border-bottom-color: rgba(0,0,0,.4);
+}
+
+.standard-input.-small,
+.standard-button.-small {
+  padding: .25rem .5rem;
+  font-size: 1rem;
+}
+
+.standard-input.-large,
+.standard-button.-large {
+  padding: .75rem;
+  font-size: 1.25rem;
+}
+
+
+.standard-input.-smol,
+.standard-button.-smol,
+.old-button.-smol {
+  padding: 2px 4px;
+  font-size: 13px;
+  font-weight: normal;
+}
+
+.standard-input.-stealth,
+.standard-button.-stealth,
+.old-button.-stealth {
+  background: white;
+  border-bottom-color: rgba(0,0,0,.05);
+}
+
+.standard-button.-stealth:hover,
+.standard-button.-stealth:focus,
+.standard-button.-stealth.active,
+.standard-button.-stealth:active {
+  color: rgba(255,255,255,.85);
+  background: linear-gradient(rgba(255,255,255,.5) 0%, rgba(0,0,0,.25) 100%), var(--root-theme, mediumseagreen);
+}
+
+.standard-button.-soft {
+  border-radius: .5rem;
+}
+.standard-button.-round {
+  border-radius: 100%;
+  aspect-ratio: 1;
+}
+
+.button-container {
+  display: flex;
+  gap: .5rem;
+}
+
+.wizard {
+  margin: 0 auto;
+  max-width: 480px;
+  padding: 3rem .5rem 3rem;
+}
+
+.form-title {
+  margin-top: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.form-subtitle {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.form-description {
+  margin-bottom: 1rem;
+}
+
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "diffhtml": "https://esm.sh/diffhtml@1.0.0-beta.30",
+          "pitchy": "https://esm.sh/pitchy@4",
+          "@did.coop/did-key-ed25519": "https://esm.sh/@did.coop/did-key-ed25519",
+          "@wallet.storage/fetch-client": "https://esm.sh/@wallet.storage/fetch-client@^1.1.3",
+          "@plan68/app": "/plan68.js",
+          "@geckos.io/client": "https://esm.sh/@geckos.io/client@3.0.0"
+        }
+      }
+    </script>
+    <script>
+      const parameters = new URLSearchParams(window.location.search)
+      self.plan98 ||= { env: {} }
+
+      self.plan98 = {
+        ...self.plan98,
+        parameters,
+      }
+    </script>
+    <script async type="module" id="lazy-bootstrap" src="/plan68.js"></script>
+  </head>
+  <script>document.write(`<body pathname="${window.location.pathname}">`)</script>
+    <data-tooltip>
+    <data-popover>
+      <main id="main">
+
+
+        <!-- Your Content Goes Here -->
+        <music-tuner></music-tuner>
+
+
+      </main>
+    </data-popover>
+    </data-tooltip>
+    <script>
+      if (window.self !== window.top) {
+        window.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            event.preventDefault()
+            const escapeEvent = new KeyboardEvent('keydown', {
+              key: 'Escape',
+              code: 'Escape',
+              keyCode: 27,
+              which: 27,
+              bubbles: true,
+              cancelable: true
+            });
+            window.parent.document.dispatchEvent(escapeEvent);
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
