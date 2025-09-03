@@ -253,6 +253,7 @@
         "imports": {
           "diffhtml": "https://esm.sh/diffhtml@1.0.0-beta.30",
           "pitchy": "https://esm.sh/pitchy@4",
+          "vosk-browser": "https://esm.sh/vosk-browser@0.0.8",
           "@did.coop/did-key-ed25519": "https://esm.sh/@did.coop/did-key-ed25519",
           "@wallet.storage/fetch-client": "https://esm.sh/@wallet.storage/fetch-client@^1.1.3",
           "@plan68/app": "/plan68.js",
@@ -262,7 +263,11 @@
     </script>
     <script>
       const parameters = new URLSearchParams(window.location.search)
-      self.plan98 ||= { env: {} }
+      self.plan98 ||= {
+        env: {
+          PLAN98_WAS_HOST: 'https://storage.bengo.is',
+        }
+      }
 
       self.plan98 = {
         ...self.plan98,
@@ -270,6 +275,8 @@
       }
     </script>
     <script async type="module" id="lazy-bootstrap" src="/plan68.js"></script>
+    <link media="print" onload="this.media='all'" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/light.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace-autoloader.js"></script>
   </head>
   <script>document.write(`<body pathname="${window.location.pathname}">`)</script>
     <data-tooltip>
@@ -278,7 +285,7 @@
 
 
         <!-- Your Content Goes Here -->
-        <music-tuner></music-tuner>
+        <cultural-preservation></cultural-preservation>
 
 
       </main>

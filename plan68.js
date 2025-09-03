@@ -24,8 +24,16 @@ if(!rootAgent){
   rootAgent = JSON.parse(rootAgent)
 }
 
-const signer = await Ed25519Signer.fromJSON(JSON.stringify(rootAgent.asJSON))
+let signer = await Ed25519Signer.fromJSON(JSON.stringify(rootAgent.asJSON))
 const storage = new StorageClient(new URL(walletDefaultHost))
+
+export function getSigner() {
+  return signer
+}
+
+export function setSigner(s) {
+  signer = s
+}
 
 const logs = {}
 
@@ -340,6 +348,13 @@ function uuidv4() {
   });
 }
 
+export function getSpace(uuid) {
+  return storage.space({
+    signer,
+    id: `urn:uuid:${uuid}`
+  })
+}
+
 export async function get(src) {
   const resource = this.space.resource(src)
 
@@ -366,10 +381,7 @@ export async function touch(src, config={ type: 'application/json' }) {
 window.touch = touch
 
 async function guaranteeTheData(link, target) {
-  const space = storage.space({
-    signer,
-    id: `urn:uuid:${target.id}`
-  })
+  const space = getSpace(target.id)
 
   const linkset = space.resource(`linkset`)
   const spaceObject = {
@@ -401,10 +413,7 @@ async function guaranteeTheData(link, target) {
 
 function upTheData(link, target) {
   addAgent(link, function callbackLikeAnOperator() {
-    const space = storage.space({
-      signer,
-      id: `urn:uuid:${target.id}`
-    })
+    const space = getSpace(target.id)
 
     const state = learn(link)
 
@@ -414,10 +423,7 @@ function upTheData(link, target) {
 }
 
 function downTheData(link, target) {
-  const space = storage.space({
-    signer,
-    id: `urn:uuid:${target.id}`
-  })
+  const space = getSpace(target.id)
   get.call({ space }, plan68path(target))
     .then(blob => {
       if(blob) {

@@ -1,5 +1,5 @@
 # Quick Start
 
 ```
-deno run -A https://plan98.org/server.js
+deno run -A server.js
 ```
